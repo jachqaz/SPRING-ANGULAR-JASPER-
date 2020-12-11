@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service(value = "BaseServiceImpl")
 public class BaseServiceImpl implements BaseService {
@@ -45,6 +46,11 @@ public class BaseServiceImpl implements BaseService {
     @Override
     public Base find(Class cl, Long id) {
         return this.baseDao.find(cl, id);
+    }
+
+    @Override
+    public List<Base> getAll(Class cl) {
+        return this.baseDao.getAll(cl);
     }
 
     @Override

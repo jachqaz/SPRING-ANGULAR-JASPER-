@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class BaseDaoImpl<E, K> implements BaseDao<E, K> {
@@ -42,6 +44,14 @@ public class BaseDaoImpl<E, K> implements BaseDao<E, K> {
     @Override
     public E find(Class cl, Long id) {
         return (E) entityManager.find(cl, id);
+    }
+
+    @Override
+    public List<E> getAll(Class cl) {
+        CriteriaQuery<E> criteria = entityManager.getCriteriaBuilder().createQuery(cl);
+        criteria.select(criteria.from(cl));
+        List<E> resultList = entityManager.createQuery(criteria).getResultList();
+        return resultList;
     }
 
     @Override
