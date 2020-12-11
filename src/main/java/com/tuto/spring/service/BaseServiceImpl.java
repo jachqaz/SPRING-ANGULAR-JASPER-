@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Service(value = "BaseService")
+@Service(value = "BaseServiceImpl")
 public class BaseServiceImpl implements BaseService {
 
     @Autowired
