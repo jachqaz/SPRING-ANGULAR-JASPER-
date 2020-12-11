@@ -2,10 +2,12 @@ package com.tuto.spring.dao;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+@Repository
 public class BaseDaoImpl<E, K> implements BaseDao<E, K> {
 
     @Autowired
